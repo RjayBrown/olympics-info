@@ -17,12 +17,29 @@
 	clear: both;
 }
 
+.container {
+     display: flex;
+     place-content: center space-evenly;
+     flex-wrap: wrap;
+     /* border: 3px solid white; */
+}
+
+.container.col {
+     flex-flow: column wrap;
+}
+
 /******************************************
 /* BASE STYLES
 /*******************************************/
 
 body {
-
+     font-family: 'Poppins', sans-serif;
+     background: url('../images/background.jpg');
+     background-repeat: no-repeat;
+     background-size: cover;
+     padding: 0 2%;
+     text-align: center;
+     color: white;
 }
 
 
@@ -30,7 +47,39 @@ body {
 /* LAYOUT
 /*******************************************/
 header {
+     margin-bottom: 5rem;
+}
 
+nav {
+     display: flex;
+     place-content: center space-between;
+     align-items: center;
+}
+
+ul.container li {
+     list-style: none;
+     padding: 1rem;
+}
+
+@media screen and (max-width: 480px) {
+     .menu {
+          display: none;
+     }
+
+     .burger {
+          width: 30px;
+          margin-right: 15px;
+     }
+
+     .logo-text {
+          font-size: 1.75rem;
+     }
+}
+
+@media screen and (min-width: 480px) {
+     .burger {
+          display: none;
+     }
 }
 
 footer {
@@ -40,3 +89,13 @@ footer {
 /******************************************
 /* ADDITIONAL STYLES
 /*******************************************/
+a {
+     color: white;
+     text-decoration: none;
+}
+
+.logo-text {
+     border-top: 3px solid white;
+     border-bottom: 3px solid white;
+}
+
