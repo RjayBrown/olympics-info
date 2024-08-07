@@ -33,10 +33,15 @@
 /*******************************************/
 
 body {
+  /* background: radial-gradient(rgb(17, 49, 78), rgb(50, 36, 57), rgb(22, 12, 27)); */
+  background: rgb(22, 12, 27);
+}
+
+body {
   font-family: 'Poppins', sans-serif;
-  background: url('../images/background.jpg');
+  /* background: url('../images/background.jpg');
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: cover; */
   padding: 0 2%;
   text-align: center;
   color: white;
@@ -58,6 +63,17 @@ nav {
 ul.container li {
   list-style: none;
   padding: 1rem;
+  font-weight: 500px;
+}
+
+.data-card {
+  background: rgb(22, 12, 27);
+  color: white;
+  width: 45%;
+  height: 500px;
+  margin: 1rem;
+  padding: 1rem;
+  border-radius: 8px;
 }
 
 @media screen and (max-width: 480px) {
@@ -75,11 +91,52 @@ ul.container li {
   }
 }
 
+@media screen and (max-width: 780px) {
+  .data-card {
+    width: 100%
+  }
+}
+
+
 @media screen and (min-width: 480px) {
   .burger {
     display: none;
   }
 }
+
+.country {
+  width: 12%;
+  margin: 0 1rem
+}
+
+.country > * {
+  margin: 0 10px 1rem 10px;
+  text-align: center;
+}
+
+.leaders {
+  margin: 1.5rem
+}
+
+.leaders {
+  /* background-color: rgb(13, 14, 31, .4);
+  border: 1px solid white; */
+  color: white;
+  border-radius: 3px
+}
+
+fieldset {
+  border: 1px solid rgb(22, 12, 27);
+}
+
+fieldset * {
+  margin: .5rem 0;
+}
+
+.form {
+  margin: 3rem auto 2rem auto
+}
+
 
 footer {
 }
@@ -92,7 +149,58 @@ a {
   text-decoration: none;
 }
 
+.menua {
+  margin-top: 5px;
+}
+
 .logo-text {
   border-top: 3px solid white;
   border-bottom: 3px solid white;
+  font-weight: 700;
+}
+
+h1 {
+  font-weight: 500;
+}
+
+.medals {
+  margin: 0 0 1.5rem 0;
+}
+
+.first {
+  color: gold
+}
+
+.second {
+  color: silver
+}
+
+.third {
+  color: rgb(157, 69, 20)
+}
+
+button {
+  background-color: rgb(50, 36, 57);
+  color: white;
+  padding: 5px;
+  border: 2px solid rgb(50, 36, 57);
+  border-radius: 2px;
+  transition: background-color 200ms, border 200ms, color 200ms
+}
+
+button:hover {
+  background-color: rgb(18, 56, 92);
+  border: 2px solid rgb(18, 56, 92);
+}
+
+button:active {
+  background-color: rgb(40, 20, 45);
+  border: 2px solid rgb(40, 20, 45);
+  border-radius: 2px
+}
+
+input {
+  padding: 6px;
+  border: 1px solid grey;
+  border-radius: 2px
 }

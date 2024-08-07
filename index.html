@@ -1,46 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/normalize.css" />
-    <link rel="stylesheet" href="css/style.css" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;700&display=swap"
-      rel="stylesheet"
-    />
-    <title>Document</title>
-  </head>
-  <body>
-    <header>
-      <nav>
-        <a href="">
-          <h1 class="logo-text">OLYMPICS 2024</h1>
-        </a>
-        <ul class="container menu">
-          <li><a href="">About</a></li>
-          <li><a href="">Search</a></li>
-        </ul>
-        <!-- hamburger icon -->
-        <img src="images/burger.svg" alt="" class="burger" />
-      </nav>
-    </header>
-    <section class="homepage">
-      <div class="homepage__text">
-        <h1>Get the latest results from the 2024 Olympics</h1>
-      </div>
-      <div class="homepage__query">
-        <input type="text" />
-        <button>Get data</button>
-      </div>
-      <div class="homepage__display">
-        <h2 class="country">🇫🇷 France</h2>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/normalize.css" />
+  <link rel="stylesheet" href="css/style.css" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;700&display=swap"
+    rel="stylesheet" />
+  <title>Document</title>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <a href="index.html">
+        <h1 class="logo-text">OLYMPICS 2024</h1>
+      </a>
+      <ul class="container menu">
+        <li><a href="about.html">About</a></li>
+        <li><a href="index.html">Search</a></li>
+      </ul>
+      <!-- hamburger icon -->
+      <img src="images/burger.svg" alt="" class="burger" />
+    </nav>
+  </header>
+  <section class="homepage">
+    <div class="homepage__text">
+      <h1>Get the latest results from the 2024 Olympics</h1>
+    </div>
+    <section class="container leaders">
+      <div class="container col">
+        <h2 class="medals">Medal Count</h2>
         <h2 class="medals">🥇 🥈 🥉</h2>
+        <section class="container">
+          <div class="container col country">
+            <h3 class="name">Country1</h3>
+            <h3 class="first">0</h3>
+          </div>
+          <div class="container col country">
+            <h3 class="name">Country2</h3>
+            <h3 class="second">0</h3>
+          </div>
+          <div class="container col country">
+            <h3 class="name">Country3</h3>
+            <h3 class="third">0</h3>
+          </div>
+        </section>
+        <button>Full Leaderboard</button>
       </div>
     </section>
-    <script src="js/main.js"></script>
-  </body>
+    <div class="homepage__query">
+      <h2>Search By Country</h2>
+      <input type="text" placeholder="Country Name" />
+      <button>Search</button>
+      <section class="form">
+        <form action="">
+          <fieldset>
+            <legend>
+              <h2>Search By Competitor</h2>
+            </legend>
+            <label for="country"></label>
+            <input type="text" id="country" name="country" placeholder="Country"><br>
+            OR<br>
+            <label for="athlete"></label>
+            <input type="text" id="athlete" name="athlete" placeholder="Athlete"><br>
+            <label for="sport"></label>
+            <input type="text" id="sport" name="sport" placeholder="Sport"><br>
+            <button>Submit</button>
+          </fieldset>
+        </form>
+      </section>
+    </div>
+    <div class="homepage__display">
+      <!-- <h2 class="medals">Medal Count</h2>
+      <h2 class="medals">🥇 🥈 🥉</h2> -->
+    </div>
+    <section class="container">
+      <section class="data-card">
+        <h2>Olympic Events</h2>
+        <div class="data"></div>
+      </section>
+      <div class="data-card">
+        <h2>Competitor List</h2>
+        <div class="data"></div>
+      </div>
+    </section>
+  </section>
+  <script src="js/main.js"></script>
+</body>
+
 </html>
