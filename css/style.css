@@ -127,7 +127,7 @@ footer {
 
 .logo-text {
   border-top: 4px solid white;
-  border-bottom: 4px solid white;
+  border-bottom: 4px solid gold;
   font-weight: 700;
   color: white;
   transition: color 300ms ease, border 300ms ease;
@@ -159,11 +159,11 @@ ul.menu li {
 ul.menu a {
   font-weight: 500px;
   color: white;
-  transition: color 2000ms linear 0;
+  transition: color 200ms ease-in;
 }
 
 ul.menu a:hover {
-  color: gold
+  color: gold;
 }
 
 h1, h2, h3 {
