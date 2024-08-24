@@ -174,15 +174,27 @@ h1, h2, h3 {
   margin: 0 0 1.5rem 0;
 }
 
-.first {
+.gold-TM {
+  border: 2px solid gold;
+}
+
+.silver-TM {
+  border: 2px solid silver;
+}
+
+.bronze-TM {
+  border: 2px solid rgb(133, 50, 9);
+}
+
+.gold-TMC {
   color: gold
 }
 
-.second {
+.silver-TMC {
   color: silver
 }
 
-.third {
+.bronze-TMC {
   color: rgb(157, 69, 20)
 }
 
