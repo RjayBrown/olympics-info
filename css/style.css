@@ -72,6 +72,13 @@ nav {
   padding-left: 20px;
 }
 
+.homepage__display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+}
+
 .homepage__display,
 .events__display {
   background: rgb(230, 230, 230);
@@ -96,7 +103,6 @@ nav {
   }
 }
 
-
 @media screen and (min-width: 780px) {
   .burger {
     display: none;
@@ -105,7 +111,7 @@ nav {
 
 .country {
   width: 12%;
-  margin: 0 1rem
+  margin: 0 1rem;
 }
 
 .country > * {
@@ -114,9 +120,8 @@ nav {
 }
 
 .leaders {
-  margin: 1.5rem
+  margin: 1.5rem;
 }
-
 
 footer {
 }
@@ -146,7 +151,6 @@ footer {
   color: gold;
 }
 
-
 a {
   color: white;
   text-decoration: none;
@@ -166,7 +170,9 @@ ul.menu a:hover {
   color: gold;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   font-weight: 500;
 }
 
@@ -187,15 +193,15 @@ h1, h2, h3 {
 }
 
 .gold-TMC {
-  color: gold
+  color: gold;
 }
 
 .silver-TMC {
-  color: silver
+  color: silver;
 }
 
 .bronze-TMC {
-  color: rgb(157, 69, 20)
+  color: rgb(157, 69, 20);
 }
 
 button {
@@ -204,13 +210,13 @@ button {
   padding: 10px;
   border: 2px solid rgb(18, 56, 92);
   border-radius: 3px;
-  transition: border 200ms, background-color 200ms, border 200ms
+  transition: border 200ms, background-color 200ms, border 200ms;
 }
 
 button:hover {
   border: 2px solid rgb(15, 45, 73);
   background-color: rgb(15, 45, 73);
-  color: gold
+  color: gold;
 }
 
 button:active {
