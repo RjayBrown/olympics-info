@@ -59,6 +59,18 @@ const server = http.createServer((req, res) => {
       res.write(data);
       res.end();
     });
+  } else if (page == '/images/olympics.jpg') {
+    fs.readFile('images/olympics.jpg', function (err, data) {
+      res.writeHead(200, { 'Content-Type': 'image/jpg' });
+      res.write(data);
+      res.end();
+    });
+  } else if (page == '/images/burger.svg') {
+    fs.readFile('images/burger.svg', function (err, data) {
+      res.writeHead(200, { 'Content-Type': 'image/jpg' });
+      res.write(data);
+      res.end();
+    });
   } else {
     figlet('404!!', function (err, data) {
       if (err) {
