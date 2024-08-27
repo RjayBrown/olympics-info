@@ -41,6 +41,7 @@ async function handleData() {
   searchBtn.addEventListener('click', () => {
     const input = searchField.value;
     const foundObject = data.find((item) => item.id === input);
+    queryCountry.scrollIntoView({ behavior: 'smooth' });
     queryCountry.src = foundObject.flag_url;
     queryMedal.textContent = `Total medals: ${foundObject.total_medals}`;
   });
