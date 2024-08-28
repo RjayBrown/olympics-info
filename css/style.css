@@ -83,9 +83,23 @@ nav {
 .events__display {
   background: rgb(230, 230, 230);
   width: 100vw;
-  height: 500px;
+  /* height: 500px; */
   margin: 5rem auto;
-  padding: 1rem 0;
+  padding: 3rem 0;
+}
+
+.country-card {
+  /* border: 1px solid black; */
+  /* border-right: 1px solid rgb(18, 56, 92);
+  border-left: 1px solid rgb(18, 56, 92); */
+  border-bottom-left-radius: 35px;
+  border-bottom-right-radius: 35px;
+  width: 40%;
+
+  margin: 0;
+  padding: 0;
+
+  box-shadow: 2px 3px 20px rgb(3, 19, 33)
 }
 
 @media screen and (max-width: 780px) {
@@ -101,6 +115,20 @@ nav {
   .logo-text {
     font-size: 2.25rem;
   }
+
+  .country-card {
+    /* border: 1px solid black; */
+    /* border-right: 1px solid rgb(18, 56, 92);
+    border-left: 1px solid rgb(18, 56, 92); */
+    border-bottom-left-radius: 35px;
+    border-bottom-right-radius: 35px;
+    width: 80%;
+  
+    margin: 0;
+    padding: 0;
+  
+    box-shadow: 2px 3px 20px rgb(3, 19, 33)
+  }
 }
 
 @media screen and (min-width: 780px) {
@@ -109,15 +137,38 @@ nav {
   }
 }
 
-.country {
-  width: 12%;
-  margin: 0 1rem;
+.query-country {
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
-
-.country > * {
+.country-name {
+  background-color: rgb(11, 34, 55);
+  color: white;
+  font-weight: bold;
+  margin: 0;
+  padding: 1rem 0;
+}
+.query-medal,
+.query-total-medal {
+  padding: 50px;
+}
+.query-medal {
+  margin: 0;
+}
+.query-total-medal {
+  background: rgb(18, 56, 92);
+  color: white;
+  font-weight: bold;
+  width: 100%;
+  margin: 0;
+  border-bottom-left-radius: 35px;
+  border-bottom-right-radius: 35px;
+}
+/* .country > * {
   margin: 0 10px 1rem 10px;
   text-align: center;
-}
+} */
 
 .leaders {
   margin: 1.5rem;
