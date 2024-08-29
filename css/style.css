@@ -83,15 +83,11 @@ nav {
 .events__display {
   background: rgb(230, 230, 230);
   width: 100vw;
-  /* height: 500px; */
   margin: 5rem auto;
   padding: 3rem 0;
 }
 
 .country-card {
-  /* border: 1px solid black; */
-  /* border-right: 1px solid rgb(18, 56, 92);
-  border-left: 1px solid rgb(18, 56, 92); */
   border-bottom-left-radius: 35px;
   border-bottom-right-radius: 35px;
   width: 40%;
@@ -117,16 +113,13 @@ nav {
   }
 
   .country-card {
-    /* border: 1px solid black; */
-    /* border-right: 1px solid rgb(18, 56, 92);
-    border-left: 1px solid rgb(18, 56, 92); */
     border-bottom-left-radius: 35px;
     border-bottom-right-radius: 35px;
     width: 80%;
-  
+
     margin: 0;
     padding: 0;
-  
+
     box-shadow: 2px 3px 20px rgb(3, 19, 33)
   }
 }
