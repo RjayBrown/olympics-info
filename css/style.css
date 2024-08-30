@@ -1,40 +1,10 @@
-/* Box Model Hack */
+/*******************************************/
+/*              BASE STYLES                */
+/*******************************************/
 * {
   box-sizing: border-box;
 }
 
-/* Clear fix hack */
-.clearfix:after {
-  content: '.';
-  display: block;
-  clear: both;
-  visibility: hidden;
-  line-height: 0;
-  height: 0;
-}
-
-.clear {
-  clear: both;
-}
-
-.container {
-  display: flex;
-  place-content: center space-evenly;
-  flex-wrap: wrap;
-  /* border: 3px solid white; */
-}
-
-.container.col {
-  flex-flow: column wrap;
-}
-
-.container * {
-  margin: 10px;
-}
-
-/******************************************
-/* BASE STYLES
-/*******************************************/
 html {
   font-size: 62.5%;
 }
@@ -53,14 +23,42 @@ body {
 
 body {
   font-family: 'Poppins', sans-serif;
-  padding: 0;
+  padding: 10px;
   text-align: center;
   color: white;
 }
 
-/******************************************
-/* LAYOUT
 /*******************************************/
+/*          WRAPPER | CONTAINERS           */
+/*******************************************/
+
+.container {
+  display: flex;
+  place-content: center space-evenly;
+  flex-wrap: wrap;
+  /* border: 3px solid white; */
+}
+
+.container.col {
+  flex-flow: column wrap;
+}
+
+.container * {
+  margin: 10px;
+}
+
+/*******************************************/
+/*              TOGGLE STYLES              */
+/*******************************************/
+
+.hidden {
+  display: none;
+}
+
+/*******************************************/
+/*        HEADER | NAV | FOOTER            */
+/*******************************************/
+
 header {
   margin-bottom: 5rem;
 }
@@ -72,107 +70,41 @@ nav {
   padding-left: 20px;
 }
 
-.homepage__display {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: black;
-}
-
-.homepage__display,
-.events__display {
-  background: rgb(230, 230, 230);
-  width: 100vw;
-  margin: 5rem auto;
-  padding: 3rem 0;
-}
-
-.country-card {
-  border-bottom-left-radius: 35px;
-  border-bottom-right-radius: 35px;
-  width: 40%;
-
-  margin: 0;
-  padding: 0;
-
-  box-shadow: 2px 3px 20px rgb(3, 19, 33)
-}
-
-@media screen and (max-width: 780px) {
-  .menu {
-    display: none;
-  }
-
-  .burger {
-    width: 30px;
-    margin-right: 15px;
-  }
-
-  .logo-text {
-    font-size: 2.25rem;
-  }
-
-  .country-card {
-    border-bottom-left-radius: 35px;
-    border-bottom-right-radius: 35px;
-    width: 80%;
-
-    margin: 0;
-    padding: 0;
-
-    box-shadow: 2px 3px 20px rgb(3, 19, 33)
-  }
-}
-
 @media screen and (min-width: 780px) {
   .burger {
     display: none;
   }
 }
 
-.query-country {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-}
-.country-name {
-  background-color: rgb(11, 34, 55);
-  color: white;
-  font-weight: bold;
-  margin: 0;
-  padding: 1rem 0;
-}
-.query-medal,
-.query-total-medal {
-  padding: 50px;
-}
-.query-medal {
-  margin: 0;
-}
-.query-total-medal {
-  background: rgb(18, 56, 92);
-  color: white;
-  font-weight: bold;
-  width: 100%;
-  margin: 0;
-  border-bottom-left-radius: 35px;
-  border-bottom-right-radius: 35px;
-}
-/* .country > * {
-  margin: 0 10px 1rem 10px;
-  text-align: center;
-} */
+@media screen and (max-width: 780px) {
+  nav .menu {
+    display: none;
+  }
 
-.leaders {
-  margin: 1.5rem;
+  .burger {
+    width: 35px;
+    margin-right: 15px;
+  }
+
+  .logo-text {
+    font-size: 3.5rem;
+  }
 }
 
-footer {
-}
+@media screen and (max-width: 480px) {
+  nav .menu {
+    display: none;
+  }
 
-/******************************************
-/* ADDITIONAL STYLES
-/*******************************************/
+  .burger {
+    width: 35px;
+    margin-right: 15px;
+  }
+
+  .logo-text {
+    font-size: 3rem;
+  }
+}
 
 .logo-text {
   border-top: 4px solid white;
@@ -220,32 +152,29 @@ h3 {
   font-weight: 500;
 }
 
-.medals {
-  margin: 0 0 1.5rem 0;
+
+footer {
 }
 
-.gold-TM {
-  border: 2px solid gold;
+/*******************************************/
+/*             INPUT | BUTTONS             */
+/*******************************************/
+
+.homepage__query * {
+  margin: 0 -2px;
 }
 
-.silver-TM {
-  border: 2px solid silver;
+.homepage__query input {
+  padding: 10px 5px;
+  border: 2px solid white;
+  border-radius: 3px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
-.bronze-TM {
-  border: 2px solid rgb(133, 50, 9);
-}
-
-.gold-TMC {
-  color: gold;
-}
-
-.silver-TMC {
-  color: silver;
-}
-
-.bronze-TMC {
-  color: rgb(157, 69, 20);
+.homepage__query button {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 }
 
 button {
@@ -268,8 +197,153 @@ button:active {
   border: 2px solid rgb(11, 34, 55);
 }
 
-input {
-  padding: 10px;
-  border: 2px solid white;
-  border-radius: 3px;
+/*******************************************/
+/*               MAIN CONTENT              */
+/*******************************************/
+
+.leaders {
+  margin: 1.5rem;
+}
+
+.medal-count {
+  color:white;
+}
+
+/**********/
+/*  GOLD  */
+/**********/
+
+.first {
+  /* border: 5px solid white;
+  background: white;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px; */
+}
+
+.first h1 {
+  color: gold;
+}
+
+.gold-flag {
+  border: 2px solid gold;
+}
+
+/************/
+/*  SILVER  */
+/************/
+
+.second {
+}
+
+.second h1 {
+  color: silver;
+}
+
+.silver-flag {
+  border: 2px solid silver;
+}
+
+/************/
+/*  BRONZE  */
+/************/
+
+.third {
+}
+
+.third h1 {
+  color: rgb(133, 50, 9);
+}
+
+.bronze-flag {
+  border: 2px solid rgb(133, 50, 9);
+}
+
+@media screen and (max-width: 480px) {
+
+  .country-card {
+    border-bottom-left-radius: 35px;
+    border-bottom-right-radius: 35px;
+    width: 75%;
+
+    margin: 0;
+    padding: 0;
+
+    box-shadow: 2px 3px 20px rgb(3, 19, 33)
+  }
+
+}
+
+@media screen and (max-width: 780px) {
+
+  .country-card {
+    border-bottom-left-radius: 35px;
+    border-bottom-right-radius: 35px;
+    width: 40%;
+
+    margin: 0;
+    padding: 0;
+
+    box-shadow: 2px 3px 20px rgb(3, 19, 33)
+  }
+
+}
+
+@media screen and (min-width: 780px) {
+
+  .country-card {
+    border-bottom-left-radius: 35px;
+    border-bottom-right-radius: 35px;
+    width: 35%;
+
+    margin: 0;
+    padding: 0;
+
+    box-shadow: 2px 3px 20px rgb(3, 19, 33)
+  }
+
+}
+
+.homepage__display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+}
+
+.homepage__display,
+.events__display {
+  background: rgb(230, 230, 230);
+  width: 100vw;
+  margin: 5rem auto;
+  padding: 3rem 0;
+}
+
+.query-country {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+.country-name {
+  background-color: rgb(11, 34, 55);
+  color: white;
+  font-weight: bold;
+  margin: 0;
+  padding: 1rem 0;
+}
+.query-medal,
+.query-total-medal {
+  padding: 50px;
+}
+.query-medal {
+  margin: 0;
+}
+.query-total-medal {
+  background: rgb(18, 56, 92);
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  width: 100%;
+  margin: 0;
+  border-bottom-left-radius: 35px;
+  border-bottom-right-radius: 35px;
 }
