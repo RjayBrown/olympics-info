@@ -23,7 +23,7 @@
         </a>
         <ul class="container menu">
           <li><a href="index.html">Medal Count</a></li>
-          <li><a href="events.html">Events</a></li>
+          <li><a href="events.html">Olympic Events</a></li>
         </ul>
         <!-- hamburger icon -->
         <img src="images/burger.svg" alt="" class="burger" />
@@ -35,49 +35,47 @@
       </div>
       <section class="container leaders">
         <div class="container col">
-          <h2 class="medals">Medal Count</h2>
+          <h2 class="medals">Top Countries</h2>
           <section class="container">
-            <div class="container col first">
+            <div class="container col gold">
               <img src="" class="gold-flag"></img>
-              <h1>1ST</h1>
+              <h1>🥇</h1>
               <h3 class="gold-TMC"></h3>
             </div>
-            <div class="container col second">
+            <div class="container col silver">
               <img src="" class="silver-flag"></img>
-              <h1>2ND</h1>
+              <h1>🥈</h1>
               <h3 class="silver-TMC"></h3>
-              <!-- <h3>🥈</h3> -->
             </div>
-            <div class="container col third">
+            <div class="container col bronze">
               <img src="" class="bronze-flag"></hi>
-              <h1>3RD</h1>
+              <h1>🥉</h1>
               <h3 class="bronze-TMC"></h3>
-              <!-- <h3>🥉</h3> -->
             </div>
           </section>
           <section class="container col">
+            <button id="leaderboard">Full Leaderboard</button>
+            <button id="olympicEvents" onclick="window.location.href='events.html'">Olympic Events</a></button>
             <div class="homepage__query">
               <label for="search"></label>
               <input type="text" name="search" id="search-field" placeholder="Country">
               <button class="search" id="search-btn">Search</button>
             </div>
-            <button id="leaderboard">Full Leaderboard</button>
-            <button id="olympicEvents" onclick="window.location.href='events.html'">Olympic Events</a></button>
           </section>
         </div>
-        <div class="homepage__display">
-          <div class="container col country-card">
-            <img src="" class="query-country">
-            <h1 class="country-name">FRANCE</h1>
-            <div class="container">
-              <h4 class="query-gold"></h4>
-              <h4 class="query-silver"></h4>
-              <h4 class="query-bronze"></h4>
-            </div>
-            <h3 class="query-total-medal"></h3>
-          </div>
-        </div>
       </section>
+      <div class="homepage__display">
+        <div class="container col country-card hidden">
+          <img src="" class="query-country">
+          <h1 class="country-name"></h1>
+          <div class="container">
+            <h4 class="query-gold"></h4>
+            <h4 class="query-silver"></h4>
+            <h4 class="query-bronze"></h4>
+          </div>
+          <h3 class="query-total-medal"></h3>
+        </div>
+      </div>
     </section>
   </main>
   <script src="js/main.js"></script>
