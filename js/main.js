@@ -2,6 +2,7 @@
 
 handleData();
 
+/* DOM ELEMENTS */
 
 /* TOP 3 */
 
@@ -26,26 +27,13 @@ const queryName = document.querySelector('.country-name');
 const queryBronze = document.querySelector('.query-bronze');
 const querySilver = document.querySelector('.query-silver');
 const queryGold = document.querySelector('.query-gold');
-const queryTotal = document.querySelector('.query-total-medal');
+const queryTotal = document.querySelector('.query-total-medals');
 
 const searchField = document.querySelector('#search-field');
 const searchBtn = document.querySelector('#search-btn');
 
-/* Function to get proper ordinal value for country leaderboard position */
-let getOrdinal = (num) => {
-  let ordinal
-  if (num === 1 || +String(num)[0] > 1 && +String(num)[1] === 1 || +String(num)[2] === 1) {
-    ordinal = 'st';
-  } else if (num === 2 || +String(num)[0] > 1 && +String(num)[1] === 2 || +String(num)[2] === 2) {
-    ordinal = 'nd';
-  } else if (num === 3 || +String(num)[0] > 1 && +String(num)[1] === 3 || +String(num)[2] === 3) {
-    ordinal = 'rd';
-  } else {
-    ordinal = 'th';
-  }
-  return ordinal;
-}
 
+/* API call */
 
 async function getData() {
   try {
@@ -70,13 +58,32 @@ async function getData() {
   }
 }
 
+/* Functions to handle country data  */
+
+/* Getting proper ordinal value for country leaderboard position */
+let getOrdinal = (num) => {
+  let ordinal
+  if (num === 1 || +String(num)[0] > 1 && +String(num)[1] === 1 || +String(num)[2] === 1) {
+    ordinal = 'st';
+  } else if (num === 2 || +String(num)[0] > 1 && +String(num)[1] === 2 || +String(num)[2] === 2) {
+    ordinal = 'nd';
+  } else if (num === 3 || +String(num)[0] > 1 && +String(num)[1] === 3 || +String(num)[2] === 3) {
+    ordinal = 'rd';
+  } else {
+    ordinal = 'th';
+  }
+  return ordinal;
+}
+
+/* Displaying country medal details */
+
 async function handleData() {
   const data = await getData();
 
   let getCountry = () => {
     const input = searchField.value.toUpperCase();
     const foundObject = data.find((item) => item.id === input);
-    countryCardEl.classList.remove('hidden')
+    countryCardEl.classList.remove('hidden');
     queryCountry.scrollIntoView({ behavior: 'smooth' });
     queryCountry.src = foundObject.flag_url;
     let ord = getOrdinal(foundObject.rank_total_medals)
@@ -102,15 +109,15 @@ async function handleData() {
   }
 
   let getGold = () => {
-    getTop3(0)
+    getTop3(0);
   }
 
   let getSilver = () => {
-    getTop3(1)
+    getTop3(1);
   }
 
   let getBronze = () => {
-    getTop3(2)
+    getTop3(2);
   }
 
   goldEl.addEventListener('click', getGold);
