@@ -118,8 +118,6 @@ nav {
   border-top: 4px solid silver;
   border-bottom: 4px solid gold;
   font-weight: 700;
-  /* border-left: 4px solid silver;
-  padding-left: 5px; */
 }
 
 .logo-text span {
@@ -380,14 +378,12 @@ button:active {
   margin: 0;
   padding: 1rem 0;
 }
-.query-medal,
-.query-total-medal {
-  padding: 50px;
+
+.query-total-medals {
+  padding: 30px;
 }
-.query-medal {
-  margin: 0;
-}
-.query-total-medal {
+
+.query-total-medals {
   background: rgb(18, 56, 92);
   color: white;
   font-size: 2.5rem;
