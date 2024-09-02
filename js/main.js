@@ -91,7 +91,7 @@ async function handleData() {
     queryBronze.textContent = `BRONZE: ${foundObject.bronze_medals}`
     querySilver.textContent = `SILVER: ${foundObject.silver_medals}`
     queryGold.textContent = `GOLD: ${foundObject.gold_medals}`
-    queryTotal.textContent = `TOTAL MEDALS: ${foundObject.total_medals}`;
+    queryTotal.innerHTML = `TOTAL MEDALS: <br> ${foundObject.total_medals}`;
     input.value = '';
   }
 

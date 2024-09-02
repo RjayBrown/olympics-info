@@ -308,8 +308,8 @@ button:active {
 @media screen and (max-width: 825px) {
 
   .country-card {
-    border-bottom-left-radius: 35px;
-    border-bottom-right-radius: 35px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
     width: 40%;
 
     margin: 0;
@@ -323,8 +323,8 @@ button:active {
 @media screen and (max-width: 480px) {
 
   .country-card {
-    border-bottom-left-radius: 35px;
-    border-bottom-right-radius: 35px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
     width: 85%;
 
     margin: 0;
@@ -339,8 +339,8 @@ button:active {
 @media screen and (min-width: 825px) {
 
   .country-card {
-    border-bottom-left-radius: 35px;
-    border-bottom-right-radius: 35px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
     width: 35%;
 
     margin: 0;
@@ -390,6 +390,6 @@ button:active {
   font-weight: bold;
   width: 100%;
   margin: 0;
-  border-bottom-left-radius: 35px;
-  border-bottom-right-radius: 35px;
+  border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
 }
