@@ -12,7 +12,7 @@ html {
 body {
   background-image: url('../images/olympics.jpg');
   background-color: rgb(3, 19, 33);
-  background-repeat: no-repeat;
+  background-repeat: repeat;
   background-size: cover;
   background-position: center;
   background-blend-mode: overlay;
@@ -66,11 +66,14 @@ nav {
   display: flex;
   place-content: center space-between;
   align-items: center;
-  padding-left: 20px;
 }
 
 @media screen and (min-width: 825px) {
   .burger {
+    display: none;
+  }
+
+  .mobile-menu {
     display: none;
   }
 }
@@ -83,6 +86,7 @@ nav {
   .burger {
     width: 35px;
     margin-right: 25px;
+    z-index: 3;
   }
 
   .logo-text {
@@ -97,7 +101,8 @@ nav {
 
   .burger {
     width: 35px;
-    margin-right: 15px;
+    margin-right: 25px;
+    z-index: 3;
   }
 
   .logo-text {
@@ -105,7 +110,44 @@ nav {
   }
 }
 
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 100%;
+  background-color: rgba(6, 20, 32, 0.75);
+  z-index: 2;
+  place-content: stretch start;
+  align-items: stretch;
+  transition: left 200ms linear 50ms;
+}
+
+.mobile-menu h2 {
+  cursor: default;
+  padding: 10% 0 5% 0;
+  font-weight: bold;
+  text-decoration: underline;
+  text-decoration-color: gold;
+  text-underline-offset: 8px;
+}
+
+.mobile-menu > * {
+  cursor: pointer;
+  width: 100%;
+  padding: 10% 0;
+  margin: 0;
+  transition: background-color 250ms linear
+}
+
+.mobile-menu h4:hover,
+.mobile-menu h3:hover {
+  background-color: rgb(18, 56, 92);
+
+}
+
 .logo-text {
+  margin-left: 20px;
   border-top: 4px solid white;
   border-bottom: 4px solid gold;
   font-weight: 700;
@@ -162,6 +204,7 @@ footer {
 }
 
 .homepage__query input {
+  width: 65%;
   height: 42px;
   padding: 5px;
   border: 2px solid white;
@@ -204,6 +247,25 @@ button:active {
   border: 2px solid rgb(11, 34, 55);
 }
 
+.code-link {
+  padding: 25px 0;
+}
+
+.code-link a {
+  color: silver;
+  transition: color 150ms linear;
+}
+
+.code-link a:hover {
+  color: rgb(140, 140, 140)
+}
+
+.alert {
+  color: red;
+  padding: 10px;
+  text-align: left;
+}
+
 /*******************************************/
 /*               MAIN CONTENT              */
 /*******************************************/
@@ -216,6 +278,46 @@ button:active {
   color:white;
 }
 
+.homepage__display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+}
+
+.homepage__display,
+.events__display {
+  background: rgb(230, 230, 230);
+  width: 100vw;
+  padding: 3rem 0;
+}
+
+.query-country {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+.country-name {
+  background-color: rgb(11, 34, 55);
+  color: white;
+  font-weight: bold;
+  margin: 0;
+  padding: 1rem 0;
+}
+
+.query-total-medals {
+  background: rgb(18, 56, 92);
+  color: white;
+  font-size: 2.5rem;
+  font-weight: bold;
+  width: 100%;
+  margin: 0;
+  padding: 30px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+
 /***********/
 /*  TOP 3  */
 /***********/
@@ -225,17 +327,25 @@ button:active {
 .bronze {
   position: relative;
   cursor: pointer;
+  border:  3px solid white;
+  background-color: white;
+  color: rgb(3, 19, 33);
   padding: 10px;
-  background-color: rgba(1, 8, 14, 0.5);
   border-radius: 5px;
   transition: background-color 250ms ease-in-out;
+}
+
+.gold-flag,
+.silver-flag,
+.bronze-flag {
+  border: none;
 }
 
 .gold h1,
 .silver h1,
 .bronze h1 {
   position: absolute;
-  bottom: 20px;
+  bottom: 40px;
   right: -5px;
   font-size: 5rem;
 }
@@ -243,63 +353,35 @@ button:active {
 .gold h3,
 .silver h3,
 .bronze h3 {
-  /* color: white; */
   text-align: left;
 }
 
 /**********/
 /*  GOLD  */
 /**********/
-.gold,
-.gold-flag {
-  border: 3px solid gold;
-}
 
 .gold:hover {
   background: rgba(255, 217, 0, 0.5);
   color: white;
 }
 
-/* .gold h3 {
-  color: gold;
-} */
-
 /************/
 /*  SILVER  */
 /************/
-
-.silver,
-.silver-flag {
-  border: 3px solid silver;
-}
 
 .silver:hover {
   background: rgba(192, 192, 192, 0.5);
   color: white;
 }
 
-/* .silver h3 {
-  color: silver;
-} */
-
 /************/
 /*  BRONZE  */
 /************/
-
-.bronze,
-.bronze-flag {
-  border: 3px solid rgb(166, 73, 16);
-}
 
 .bronze:hover {
   background: rgba(166, 73, 16, 0.5);
   color: white
 }
-
-/* .bronze h3 {
-  color: rgb(166, 73, 16);
-} */
-
 
 /************/
 /*  CARDS   */
@@ -349,47 +431,4 @@ button:active {
     box-shadow: 2px 3px 20px rgb(3, 19, 33)
   }
 
-}
-
-.homepage__display {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: black;
-}
-
-.homepage__display,
-.events__display {
-  background: rgb(230, 230, 230);
-  width: 100vw;
-  margin: 5rem 0;
-  padding: 3rem 0;
-}
-
-.query-country {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-}
-.country-name {
-  background-color: rgb(11, 34, 55);
-  color: white;
-  font-weight: bold;
-  margin: 0;
-  padding: 1rem 0;
-}
-
-.query-total-medals {
-  padding: 30px;
-}
-
-.query-total-medals {
-  background: rgb(18, 56, 92);
-  color: white;
-  font-size: 2.5rem;
-  font-weight: bold;
-  width: 100%;
-  margin: 0;
-  border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
 }

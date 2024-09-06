@@ -4,6 +4,31 @@ handleData();
 
 /* DOM ELEMENTS */
 
+/* MOBILE NAV */
+
+const navEl = document.querySelector('.mobile-menu')
+const burgerEl = document.querySelector('.burger')
+burgerEl.addEventListener('click', showMobileNav)
+const menuEl = document.querySelector('.close')
+menuEl.addEventListener('click', hideMobileNav)
+
+function showMobileNav() {
+  navEl.style.zIndex = 4
+  burgerEl.style.opacity = 0
+  if (window.innerWidth > 480) {
+    navEl.style.left = '50%'
+  } else if (window.innerWidth < 480) {
+    navEl.style.left = '40%'
+  }
+}
+
+function hideMobileNav() {
+  navEl.style.left = '100%'
+  navEl.style.zIndex = 0
+  burgerEl.style.opacity = 1
+}
+
+
 /* TOP 3 */
 
 const goldEl = document.querySelector('.gold');
@@ -18,6 +43,12 @@ const goldCountEl = document.querySelector('.gold-TMC');
 const silverCountEl = document.querySelector('.silver-TMC');
 const bronzeCountEl = document.querySelector('.bronze-TMC');
 
+/* SEARCH */
+
+const searchField = document.querySelector('#search-field');
+const searchBtn = document.querySelector('#search-btn');
+const alert = document.querySelector('.alert')
+
 
 /* COUNTRY CARD */
 
@@ -28,9 +59,6 @@ const queryBronze = document.querySelector('.query-bronze');
 const querySilver = document.querySelector('.query-silver');
 const queryGold = document.querySelector('.query-gold');
 const queryTotal = document.querySelector('.query-total-medals');
-
-const searchField = document.querySelector('#search-field');
-const searchBtn = document.querySelector('#search-btn');
 
 
 /* API call */
@@ -47,9 +75,9 @@ async function getData() {
     silverFlagEl.src = data[1].flag_url;
     bronzeFlagEl.src = data[2].flag_url;
 
-    goldCountEl.innerHTML = `${data[0].total_medals}  <br> TOTAL MEDALS`;
-    silverCountEl.innerHTML = `${data[1].total_medals}  <br> TOTAL MEDALS`;
-    bronzeCountEl.innerHTML = `${data[2].total_medals}  <br> TOTAL MEDALS`;
+    goldCountEl.innerHTML = `${data[0].total_medals}  <br> Total Medals <br> ${data[0].id} `;
+    silverCountEl.innerHTML = `${data[1].total_medals}  <br> Total Medals <br> ${data[1].id} `;
+    bronzeCountEl.innerHTML = `${data[2].total_medals}  <br> Total Medals <br> ${data[2].id} `;
 
     return data;
   } catch {
@@ -80,22 +108,32 @@ let getOrdinal = (num) => {
 async function handleData() {
   const data = await getData();
 
-  let getCountry = () => {
+  let searchCountry = () => {
     const input = searchField.value.toUpperCase();
-    const foundObject = data.find((item) => item.id === input);
-    countryCardEl.classList.remove('hidden');
-    queryCountry.scrollIntoView({ behavior: 'smooth' });
-    queryCountry.src = foundObject.flag_url;
-    let ord = getOrdinal(foundObject.rank_total_medals)
-    queryName.textContent = `${foundObject.id} - ${foundObject.rank_total_medals}${ord}`
-    queryBronze.textContent = `BRONZE: ${foundObject.bronze_medals}`
-    querySilver.textContent = `SILVER: ${foundObject.silver_medals}`
-    queryGold.textContent = `GOLD: ${foundObject.gold_medals}`
-    queryTotal.innerHTML = `TOTAL MEDALS: <br> ${foundObject.total_medals}`;
-    input.value = '';
+    alert.textContent = ''
+    if (input) {
+      const foundObject = data.find((item) => item.id === input);
+      if (!foundObject) {
+        alert.textContent = '*Country not found'
+      } else {
+        countryCardEl.classList.remove('hidden');
+        queryCountry.scrollIntoView({ behavior: 'smooth' });
+        queryCountry.src = foundObject.flag_url;
+        let ord = getOrdinal(foundObject.rank_total_medals)
+        queryName.textContent = `${foundObject.id} - ${foundObject.rank_total_medals}${ord}`
+        queryBronze.textContent = `BRONZE: ${foundObject.bronze_medals}`
+        querySilver.textContent = `SILVER: ${foundObject.silver_medals}`
+        queryGold.textContent = `GOLD: ${foundObject.gold_medals}`
+        queryTotal.innerHTML = `TOTAL MEDALS: <br> ${foundObject.total_medals}`;
+        input.value = '';
+      }
+    } else {
+      alert.textContent = '*Country code required'
+    }
   }
 
   let getTop3 = (i) => {
+    alert.textContent = ''
     const foundObject = data.find((item) => item.id === data[i].id);
     countryCardEl.classList.remove('hidden');
     queryCountry.scrollIntoView({ behavior: 'smooth' });
@@ -123,5 +161,5 @@ async function handleData() {
   goldEl.addEventListener('click', getGold);
   silverEl.addEventListener('click', getSilver);
   bronzeEl.addEventListener('click', getBronze);
-  searchBtn.addEventListener('click', getCountry);
+  searchBtn.addEventListener('click', searchCountry);
 }

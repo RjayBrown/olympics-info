@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;700&display=swap"
     rel="stylesheet" />
-  <title>Document</title>
+  <title>2024 Olympics | Results</title>
 </head>
 
 <body>
@@ -26,6 +26,12 @@
       </ul>
       <!-- hamburger icon -->
       <img src="images/burger.svg" alt="" class="burger" />
+      <section class="container col mobile-menu">
+        <h2>MENU</h2>
+        <h4><a href="index.html">Medal Count</a></h4>
+        <h4><a href="events.html">Olympic Events</a></h4>
+        <h3 class="close">Close</h3>
+      </section>
     </nav>
   </header>
   <main>
@@ -56,12 +62,15 @@
           </section>
           <!-- Search Buttons | Input -->
           <section class="container col">
-            <button id="leaderboard">Full Leaderboard</button>
-            <button id="olympicEvents" onclick="window.location.href='events.html'">Olympic Events</a></button>
+            <button id="leaderboard">Top 50 Leaderboard</button>
+            <button id="olympic-events" onclick="window.location.href='events.html'">Olympic Events</a></button>
             <div class="homepage__query">
+              <p class="code-link"><a href="https://eapis.cbp.dhs.gov/eapis-enroll/countryCodes.do" target="_blank">Find
+                  your country code</a></p>
               <label for="search"></label>
-              <input type="text" name="search" id="search-field" placeholder="Country">
+              <input type="text" name="search" id="search-field" placeholder="Country Code">
               <button class="search" id="search-btn">Search</button>
+              <p class="alert"></p>
             </div>
           </section>
         </div>
