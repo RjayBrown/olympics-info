@@ -12,7 +12,7 @@ html {
 body {
   background-image: url('../images/olympics.jpg');
   background-color: rgb(3, 19, 33);
-  background-repeat: repeat;
+  background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   background-blend-mode: overlay;
