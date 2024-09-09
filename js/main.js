@@ -75,9 +75,9 @@ async function getData() {
     silverFlagEl.src = data[1].flag_url;
     bronzeFlagEl.src = data[2].flag_url;
 
-    goldCountEl.innerHTML = `${data[0].total_medals}  <br> Total Medals <br> ${data[0].id} `;
-    silverCountEl.innerHTML = `${data[1].total_medals}  <br> Total Medals <br> ${data[1].id} `;
-    bronzeCountEl.innerHTML = `${data[2].total_medals}  <br> Total Medals <br> ${data[2].id} `;
+    goldCountEl.innerHTML = `${data[0].id} <br> Total Medals <br> ${data[0].total_medals}`;
+    silverCountEl.innerHTML = `${data[1].id} <br> Total Medals <br> ${data[1].total_medals}`;
+    bronzeCountEl.innerHTML = `${data[2].id} <br> Total Medals <br> ${data[2].total_medals}`;
 
     return data;
   } catch {
