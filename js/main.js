@@ -61,7 +61,7 @@ const queryGold = document.querySelector('.query-gold');
 const queryTotal = document.querySelector('.query-total-medals');
 
 
-/* API call */
+/* API CALL */
 
 async function getData() {
   try {
@@ -86,10 +86,11 @@ async function getData() {
   }
 }
 
-/* Functions to handle country data  */
+/* HANDLE COUNTRY DATA  */
 
-/* Getting proper ordinal value for country leaderboard position */
-let getOrdinal = (num) => {
+/* Getting proper ordinal string value ('st' || 'nd' || 'rd' || 'th') for country leaderboard position */
+
+const getOrdinal = (num) => {
   let ordinal
   if (num === 1 || +String(num)[0] > 1 && +String(num)[1] === 1 || +String(num)[2] === 1) {
     ordinal = 'st';

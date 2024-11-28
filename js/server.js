@@ -4,6 +4,8 @@ const url = require('url');
 const querystring = require('querystring');
 const figlet = require('figlet');
 
+const PORT = 8000
+
 const server = http.createServer((req, res) => {
   const page = url.parse(req.url).pathname;
   const params = querystring.parse(url.parse(req.url).query);
@@ -20,29 +22,7 @@ const server = http.createServer((req, res) => {
       res.write(data);
       res.end();
     });
-    // } else if (page == '/api') {
-    //   if ('student' in params) {
-    //     if (params['student'] == 'leon') {
-    //       res.writeHead(200, { 'Content-Type': 'application/json' });
-    //       const objToJson = {
-    //         name: 'leon',
-    //         status: 'Boss Man',
-    //         currentOccupation: 'Baller',
-    //       };
-    //       res.end(JSON.stringify(objToJson));
-    //     } //student = leon
-    //     else if (params['student'] != 'leon') {
-    //       res.writeHead(200, { 'Content-Type': 'application/json' });
-    //       const objToJson = {
-    //         name: 'unknown',
-    //         status: 'unknown',
-    //         currentOccupation: 'unknown',
-    //       };
-    //       res.end(JSON.stringify(objToJson));
-    //     } //student != leon
-    //   } //student if
-  } //else if
-  else if (page == '/css/normalize.css') {
+  } else if (page == '/css/normalize.css') {
     fs.readFile('css/normalize.css', function (err, data) {
       res.write(data);
       res.end();
@@ -61,12 +41,6 @@ const server = http.createServer((req, res) => {
   } else if (page == '/js/events.js') {
     fs.readFile('js/main.js', function (err, data) {
       res.writeHead(200, { 'Content-Type': 'text/javascript' });
-      res.write(data);
-      res.end();
-    });
-  } else if (page == '/images/background.jpg') {
-    fs.readFile('images/background.jpg', function (err, data) {
-      res.writeHead(200, { 'Content-Type': 'image/jpg' });
       res.write(data);
       res.end();
     });
@@ -95,6 +69,6 @@ const server = http.createServer((req, res) => {
   }
 });
 
-if (server.listen(8000)) {
+if (server.listen(PORT)) {
   console.log('Server running...')
 };
