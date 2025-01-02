@@ -1,83 +1,87 @@
-/* Request and store API data on page load */
+/* Request country data from olympic results API and display when the page loads */
 
-handleData();
+displayCountryData();
 
-/* DOM ELEMENTS */
+/* MOBILE NAV MENU */
+/*-----------------*/
 
-/* MOBILE NAV */
-
-const navEl = document.querySelector('.mobile-menu')
-const burgerEl = document.querySelector('.burger')
-burgerEl.addEventListener('click', showMobileNav)
-const menuEl = document.querySelector('.close')
-menuEl.addEventListener('click', hideMobileNav)
+const navMenu = document.querySelector('.mobile-menu')
+const burgerIcon = document.querySelector('.burger')
+burgerIcon.addEventListener('click', showMobileNav)
+const closeMenuLink = document.querySelector('.close')
+closeMenuLink.addEventListener('click', hideMobileNav)
 
 function showMobileNav() {
-  navEl.style.zIndex = 4
-  burgerEl.style.opacity = 0
+  navMenu.style.zIndex = 4
+  burgerIcon.style.opacity = 0
   if (window.innerWidth > 480) {
-    navEl.style.left = '50%'
+    navMenu.style.left = '50%'
   } else if (window.innerWidth < 480) {
-    navEl.style.left = '40%'
+    navMenu.style.left = '0%'
   }
 }
 
 function hideMobileNav() {
-  navEl.style.left = '100%'
-  navEl.style.zIndex = 0
-  burgerEl.style.opacity = 1
+  navMenu.style.left = '100%'
+  navMenu.style.zIndex = 0
+  setTimeout(() => { burgerIcon.style.opacity = 1 }, 250)
 }
 
+/* DOM ELEMENTS */
+/*--------------*/
 
-/* TOP 3 */
+/* TOP 3 COUNTRY CARDS */
+const goldCard = document.querySelector('.gold');
+const silverCard = document.querySelector('.silver');
+const bronzeCard = document.querySelector('.bronze');
 
-const goldEl = document.querySelector('.gold');
-const silverEl = document.querySelector('.silver');
-const bronzeEl = document.querySelector('.bronze');
+const goldFlag = document.querySelector('.gold-flag');
+const silverFlag = document.querySelector('.silver-flag');
+const bronzeFlag = document.querySelector('.bronze-flag');
 
-const goldFlagEl = document.querySelector('.gold-flag');
-const silverFlagEl = document.querySelector('.silver-flag');
-const bronzeFlagEl = document.querySelector('.bronze-flag');
+const goldCount = document.querySelector('.gold-TMC');
+const silverCount = document.querySelector('.silver-TMC');
+const bronzeCount = document.querySelector('.bronze-TMC');
 
-const goldCountEl = document.querySelector('.gold-TMC');
-const silverCountEl = document.querySelector('.silver-TMC');
-const bronzeCountEl = document.querySelector('.bronze-TMC');
 
 /* SEARCH */
-
 const searchField = document.querySelector('#search-field');
 const searchBtn = document.querySelector('#search-btn');
 const alert = document.querySelector('.alert')
 
 
 /* COUNTRY CARD */
-
-const countryCardEl = document.querySelector('.country-card')
+const countryCard = document.querySelector('.country-card')
 const queryCountry = document.querySelector('.query-country');
-const queryName = document.querySelector('.country-name');
-const queryBronze = document.querySelector('.query-bronze');
-const querySilver = document.querySelector('.query-silver');
-const queryGold = document.querySelector('.query-gold');
-const queryTotal = document.querySelector('.query-total-medals');
+const countryName = document.querySelector('.country-name');
+const bronzeMedalCount = document.querySelector('.query-bronze');
+const silverMedalCount = document.querySelector('.query-silver');
+const goldMedalCount = document.querySelector('.query-gold');
+const totalMedalCount = document.querySelector('.query-total-medals');
 
 
-/* API CALL */
+/* FUNCTIONS */
+/*-----------*/
+
+/* MAIN API CALL TO GET OLYMPICS DATA */
 
 async function getData() {
   try {
     const res = await fetch('https://apis.codante.io/olympic-games/countries');
     const countries = await res.json();
     const data = countries.data;
+
+    /* Using total medal count to sort the array of countries in descending order (see console log in browser)*/
     data.sort((a, b) => b.total_medals - a.total_medals);
-    // console.log(data)
+    console.log(data)
 
-    goldFlagEl.src = data[0].flag_url;
-    silverFlagEl.src = data[1].flag_url;
-    bronzeFlagEl.src = data[2].flag_url;
+    goldFlag.src = data[0].flag_url;
+    silverFlag.src = data[1].flag_url;
+    bronzeFlag.src = data[2].flag_url;
 
-    goldCountEl.innerHTML = `${data[0].id} <br> Total Medals <br> ${data[0].total_medals}`;
-    silverCountEl.innerHTML = `${data[1].id} <br> Total Medals <br> ${data[1].total_medals}`;
-    bronzeCountEl.innerHTML = `${data[2].id} <br> Total Medals <br> ${data[2].total_medals}`;
+    goldCount.innerHTML = `${data[0].id} <br> Total Medals <br> ${data[0].total_medals}`;
+    silverCount.innerHTML = `${data[1].id} <br> Total Medals <br> ${data[1].total_medals}`;
+    bronzeCount.innerHTML = `${data[2].id} <br> Total Medals <br> ${data[2].total_medals}`;
 
     return data;
   } catch {
@@ -86,81 +90,79 @@ async function getData() {
   }
 }
 
-/* HANDLE COUNTRY DATA  */
+/* Async function to display country medal details on page load (function called at top) */
+async function displayCountryData() {
+  const data = await getData(); // requests country data from API
 
-/* Getting proper ordinal string value ('st' || 'nd' || 'rd' || 'th') for country leaderboard position */
-
-const getOrdinal = (num) => {
-  let ordinal
-  if (num === 1 || +String(num)[0] > 1 && +String(num)[1] === 1 || +String(num)[2] === 1) {
-    ordinal = 'st';
-  } else if (num === 2 || +String(num)[0] > 1 && +String(num)[1] === 2 || +String(num)[2] === 2) {
-    ordinal = 'nd';
-  } else if (num === 3 || +String(num)[0] > 1 && +String(num)[1] === 3 || +String(num)[2] === 3) {
-    ordinal = 'rd';
-  } else {
-    ordinal = 'th';
-  }
-  return ordinal;
-}
-
-/* Displaying country medal details */
-
-async function handleData() {
-  const data = await getData();
-
-  let searchCountry = () => {
-    const input = searchField.value.toUpperCase();
+  function getTop3(index) { // get top 3 country data (flag & medal count) from array of countries
     alert.textContent = ''
-    if (input) {
-      const foundObject = data.find((item) => item.id === input);
-      if (!foundObject) {
-        alert.textContent = '*Country not found'
-      } else {
-        countryCardEl.classList.remove('hidden');
-        queryCountry.scrollIntoView({ behavior: 'smooth' });
-        queryCountry.src = foundObject.flag_url;
-        let ord = getOrdinal(foundObject.rank_total_medals)
-        queryName.textContent = `${foundObject.id} - ${foundObject.rank_total_medals}${ord}`
-        queryBronze.textContent = `BRONZE: ${foundObject.bronze_medals}`
-        querySilver.textContent = `SILVER: ${foundObject.silver_medals}`
-        queryGold.textContent = `GOLD: ${foundObject.gold_medals}`
-        queryTotal.innerHTML = `TOTAL MEDALS: <br> ${foundObject.total_medals}`;
-        input.value = '';
-      }
-    } else {
-      alert.textContent = '*Country code required'
-    }
-  }
-
-  let getTop3 = (i) => {
-    alert.textContent = ''
-    const foundObject = data.find((item) => item.id === data[i].id);
-    countryCardEl.classList.remove('hidden');
+    const foundCountry = data.find((item) => item.id === data[index].id);
+    countryCard.classList.remove('hidden');
     queryCountry.scrollIntoView({ behavior: 'smooth' });
-    queryCountry.src = foundObject.flag_url;
-    let ord = getOrdinal(foundObject.rank_total_medals);
-    queryName.textContent = `${foundObject.id} - ${foundObject.rank_total_medals}${ord}`;
-    queryBronze.textContent = `BRONZE: ${foundObject.bronze_medals}`;
-    querySilver.textContent = `SILVER: ${foundObject.silver_medals}`;
-    queryGold.textContent = `GOLD: ${foundObject.gold_medals}`;
-    queryTotal.innerHTML = `TOTAL MEDALS <br> ${foundObject.total_medals}`;
+    queryCountry.src = foundCountry.flag_url;
+    let ord = getOrdinal(foundCountry.rank_total_medals);
+    countryName.textContent = `${foundCountry.id} - ${foundCountry.rank_total_medals}${ord}`;
+    bronzeMedalCount.textContent = `BRONZE: ${foundCountry.bronze_medals}`;
+    silverMedalCount.textContent = `SILVER: ${foundCountry.silver_medals}`;
+    goldMedalCount.textContent = `GOLD: ${foundCountry.gold_medals}`;
+    totalMedalCount.innerHTML = `TOTAL MEDALS <br> ${foundCountry.total_medals}`;
   }
 
-  let getGold = () => {
+  function getGold() {
     getTop3(0);
   }
 
-  let getSilver = () => {
+  function getSilver() {
     getTop3(1);
   }
 
-  let getBronze = () => {
+  function getBronze() {
     getTop3(2);
   }
 
-  goldEl.addEventListener('click', getGold);
-  silverEl.addEventListener('click', getSilver);
-  bronzeEl.addEventListener('click', getBronze);
+  /* Add event listener to the top 3 country cards */
+  goldCard.addEventListener('click', getGold);
+  silverCard.addEventListener('click', getSilver);
+  bronzeCard.addEventListener('click', getBronze);
   searchBtn.addEventListener('click', searchCountry);
+
+  /* Getting proper ordinal string value ('st' || 'nd' || 'rd' || 'th') for country leaderboard position */
+  const getOrdinal = (num) => {
+    let ordinal
+    if (num === 1 || +String(num)[0] > 1 && +String(num)[1] === 1 || +String(num)[2] === 1) {
+      ordinal = 'st';
+    } else if (num === 2 || +String(num)[0] > 1 && +String(num)[1] === 2 || +String(num)[2] === 2) {
+      ordinal = 'nd';
+    } else if (num === 3 || +String(num)[0] > 1 && +String(num)[1] === 3 || +String(num)[2] === 3) {
+      ordinal = 'rd';
+    } else {
+      ordinal = 'th';
+    }
+    return ordinal;
+  }
+
+  /* Search by 3-letter country code */
+  function searchCountry() {
+    const input = searchField.value.toUpperCase();
+    alert.textContent = ''
+    if (input) {
+      const foundCountry = data.find((item) => item.id === input);
+      if (!foundCountry) {
+        alert.textContent = 'Country code not found'
+      } else {
+        countryCard.classList.remove('hidden');
+        queryCountry.scrollIntoView({ behavior: 'smooth' });
+        queryCountry.src = foundCountry.flag_url;
+        let ord = getOrdinal(foundCountry.rank_total_medals)
+        countryName.textContent = `${foundCountry.id} - ${foundCountry.rank_total_medals}${ord}`
+        bronzeMedalCount.textContent = `BRONZE: ${foundCountry.bronze_medals}`
+        silverMedalCount.textContent = `SILVER: ${foundCountry.silver_medals}`
+        goldMedalCount.textContent = `GOLD: ${foundCountry.gold_medals}`
+        totalMedalCount.innerHTML = `TOTAL MEDALS: <br> ${foundCountry.total_medals}`;
+        input.value = '';
+      }
+    } else {
+      alert.textContent = 'Country code required'
+    }
+  }
 }

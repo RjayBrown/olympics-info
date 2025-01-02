@@ -3,6 +3,7 @@
 /*******************************************/
 * {
   box-sizing: border-box;
+  -webkit-margin-collapse: collapse;
 }
 
 html {
@@ -42,7 +43,7 @@ body {
 }
 
 .container * {
-  margin: 10px;
+  margin: 5px;
 }
 
 /*******************************************/
@@ -115,7 +116,7 @@ nav {
   right: 0;
   bottom: 0;
   left: 100%;
-  background-color: rgba(6, 20, 32, 0.75);
+  background-color: rgba(6, 20, 32, 0.9);
   z-index: 2;
   place-content: stretch start;
   align-items: stretch;
