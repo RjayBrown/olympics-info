@@ -31,9 +31,9 @@ const server = http.createServer((req, res) => {
       res.write(data);
       res.end();
     });
-    /* When the home page (index.html) is sent back to the client, additional requests are sent to the server for css files, JavaScript files, and images! Take a look at the other conditional statements console to see the list of urls requested for the '/' endpoint is hit */
+    /* When the home page (index.html) is sent back to the client, additional requests are sent to the server for css files, JavaScript files, and other media (images, videos, etc...) Take a look at the other conditional statements in the console to see the list of other urls requested from the 'index.html' file */
   } else if (page == '/css/normalize.css') { // checks the request url ('/css/normalize.css')
-    fs.readFile('css/normalize.css', function (err, data) { // arguments: path to file relative to origin of the request (index.html)
+    fs.readFile('css/normalize.css', function (err, data) { // arguments: file path relative to origin of the request (index.html)
       res.write(data);
       res.end();
     });
